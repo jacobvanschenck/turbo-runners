@@ -1,10 +1,12 @@
 import Identicon from 'identicon.js'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     walletModalIsVisible,
     addressModalIsVisible,
 } from '../store/wallet/actions'
+import { web3AccountLoaded } from '../store/web3/actions'
 
 const style = {
     headerButton:
@@ -15,6 +17,7 @@ const style = {
 export default function WalletConnect() {
     const dispatch = useDispatch()
     const account = useSelector((state) => state.web3.account)
+    const connection = useSelector((state) => state.web3.connection)
 
     const showWalletConnectModal = () => {
         dispatch(walletModalIsVisible(true))
@@ -23,6 +26,16 @@ export default function WalletConnect() {
     const showAddressModal = () => {
         dispatch(addressModalIsVisible(true))
     }
+
+    useEffect(() => {
+        if (connection) {
+            const provider = connection.currentProvider
+            provider.on('accountsChanged', (accounts) => {
+                dispatch(web3AccountLoaded(accounts[0]))
+            })
+            provider.on('disconnect', () => dispatch(web3AccountLoaded(null)))
+        }
+    }, [connection, dispatch])
 
     return (
         <button

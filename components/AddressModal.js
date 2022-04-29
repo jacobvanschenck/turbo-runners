@@ -69,9 +69,9 @@ export default function AddressModal() {
                             </div>
                             <button
                                 className="bg-slate-200 rounded-md text-sm px-2 py-1 hover:bg-slate-300"
-                                onClick={() =>
+                                onClick={() => {
                                     dispatch(walletModalIsVisible(true))
-                                }
+                                }}
                             >
                                 Change
                             </button>

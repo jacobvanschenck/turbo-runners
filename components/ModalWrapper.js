@@ -28,7 +28,6 @@ let useClickOutside = (handler) => {
 export default function ModalWrapper({ isVisible, closeHandler, children }) {
     const dispatch = useDispatch()
     const modalRef = useClickOutside(() => {
-        console.log('clicked outside')
         if (isVisible) {
             closeHandler()
         }

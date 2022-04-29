@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import { Provider, useSelector } from 'react-redux'
-import ModalWrapper from '../components/ModalWrapper'
+import { Provider } from 'react-redux'
 import WalletConnectModal from '../components/WalletConnectModal'
 import AddressModal from '../components/AddressModal'
 import configureStore from '../store/configureStore'

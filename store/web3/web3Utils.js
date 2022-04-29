@@ -24,7 +24,7 @@ export const loadWeb3WalletConnect = async (dispatch) => {
     } catch (err) {
         console.log(err)
     }
-    let web3 = await new Web3(provider)
+    let web3 = new Web3(provider)
     dispatch(web3loaded(web3))
     return web3
 }
