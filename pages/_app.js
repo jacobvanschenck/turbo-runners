@@ -18,10 +18,8 @@ function MyApp({ Component, pageProps }) {
                 <link rel="icon" href="/logoipsum-favicon.svg" />
             </Head>
             <Component {...pageProps} />
-            <ModalWrapper>
-                <WalletConnectModal />
-                <AddressModal />
-            </ModalWrapper>
+            <AddressModal />
+            <WalletConnectModal />
         </Provider>
     )
 }

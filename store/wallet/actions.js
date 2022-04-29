@@ -13,11 +13,3 @@ export function addressModalIsVisible(isVisible) {
         isVisible,
     }
 }
-
-export const MODAL_IS_VISIBLE = 'MODAL_IS_VISIBLE'
-export function modalIsVisible(isVisible) {
-    return {
-        type: MODAL_IS_VISIBLE,
-        isVisible,
-    }
-}

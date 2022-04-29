@@ -9,6 +9,7 @@ import {
 import metamaskIcon from '../assests/metamaskIcon.png'
 import walletConnectIcon from '../assests/walletConnectIcon.svg'
 import { AiOutlineClose } from 'react-icons/ai'
+import ModalWrapper from '../components/ModalWrapper'
 
 const style = {
     container: 'relative flex flex-col',
@@ -38,7 +39,10 @@ export default function WalletConnectModal() {
     }
 
     return (
-        isVisible && (
+        <ModalWrapper
+            isVisible={isVisible}
+            closeHandler={() => dispatch(walletModalIsVisible(false))}
+        >
             <div className={style.container}>
                 <div className={style.titleContainer}>
                     <p className={style.modalText}>Connect a Wallet</p>
@@ -70,6 +74,6 @@ export default function WalletConnectModal() {
                     </div>
                 </button>
             </div>
-        )
+        </ModalWrapper>
     )
 }

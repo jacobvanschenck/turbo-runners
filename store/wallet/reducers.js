@@ -1,15 +1,9 @@
-import { AiOutlineTransaction } from 'react-icons/ai'
-import {
-    WALLET_MODAL_IS_VISIBLE,
-    ADDRESS_MODAL_IS_VISIBLE,
-    MODAL_IS_VISIBLE,
-} from './actions'
+import { WALLET_MODAL_IS_VISIBLE, ADDRESS_MODAL_IS_VISIBLE } from './actions'
 
 const wallet = (
     state = {
         walletModalIsVisible: false,
         addressModalIsVisible: false,
-        modalIsVisible: false,
     },
     action
 ) => {
@@ -24,11 +18,6 @@ const wallet = (
             return {
                 ...state,
                 addressModalIsVisible: action.isVisible,
-                modalIsVisible: action.isVisible,
-            }
-        case MODAL_IS_VISIBLE:
-            return {
-                ...state,
                 modalIsVisible: action.isVisible,
             }
         default:

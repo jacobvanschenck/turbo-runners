@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { modalIsVisible } from '../store/wallet/actions'
+import { useDispatch } from 'react-redux'
 
 const style = {
     modalContainer:
@@ -26,12 +25,12 @@ let useClickOutside = (handler) => {
     return domNode
 }
 
-export default function ModalWrapper({ children }) {
-    const isVisible = useSelector((state) => state.wallet.modalIsVisible)
+export default function ModalWrapper({ isVisible, closeHandler, children }) {
     const dispatch = useDispatch()
     const modalRef = useClickOutside(() => {
+        console.log('clicked outside')
         if (isVisible) {
-            dispatch(modalIsVisible(false))
+            closeHandler()
         }
     })
 
