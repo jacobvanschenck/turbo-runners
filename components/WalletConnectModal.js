@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { walletModalIsVisible } from '../store/wallet/actions'
 import {
     loadAccount,
@@ -13,7 +13,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 const style = {
     container: 'relative flex flex-col',
     titleContainer: 'relative flex justify-between items-center',
-    modalText: 'p-2 font-semibold',
+    modalText: 'm-2 font-semibold',
     modalIcon: 'm-2 w-5 h-5 hover:text-slate-600 cursor-pointer',
     walletButtonContainer:
         'flex h-20 justify-between items-center bg-slate-200 p-4 m-2 rounded-md border border-slate-300 hover:bg-slate-300 cursor-pointer',
@@ -23,6 +23,7 @@ const style = {
 
 export default function WalletConnectModal() {
     const dispatch = useDispatch()
+    const isVisible = useSelector((state) => state.wallet.walletModalIsVisible)
 
     const loadAddressMetaMask = async () => {
         let web3 = await loadWeb3MetaMask(dispatch)
@@ -37,36 +38,38 @@ export default function WalletConnectModal() {
     }
 
     return (
-        <div className={style.container}>
-            <div className={style.titleContainer}>
-                <p className={style.modalText}>Connect a Wallet</p>
-                <AiOutlineClose
-                    className={style.modalIcon}
-                    onClick={() => dispatch(walletModalIsVisible(false))}
-                />
-            </div>
-            <button
-                className={style.walletButtonContainer}
-                onClick={loadAddressMetaMask}
-            >
-                <div className={style.walletButtonLabel}>MetaMask</div>
-                <div className={style.walletButtonLogoWrapper}>
-                    <Image src={metamaskIcon} alt="MetaMask logo" />
-                </div>
-            </button>
-            <button
-                className={style.walletButtonContainer}
-                onClick={loadAddressWalletConnect}
-            >
-                <div className={style.walletButtonLabel}>WalletConnect</div>
-                <div className={style.walletButtonLogoWrapper}>
-                    <Image
-                        src={walletConnectIcon}
-                        alt="Wallet Connect logo"
-                        layout="fill"
+        isVisible && (
+            <div className={style.container}>
+                <div className={style.titleContainer}>
+                    <p className={style.modalText}>Connect a Wallet</p>
+                    <AiOutlineClose
+                        className={style.modalIcon}
+                        onClick={() => dispatch(walletModalIsVisible(false))}
                     />
                 </div>
-            </button>
-        </div>
+                <button
+                    className={style.walletButtonContainer}
+                    onClick={loadAddressMetaMask}
+                >
+                    <div className={style.walletButtonLabel}>MetaMask</div>
+                    <div className={style.walletButtonLogoWrapper}>
+                        <Image src={metamaskIcon} alt="MetaMask logo" />
+                    </div>
+                </button>
+                <button
+                    className={style.walletButtonContainer}
+                    onClick={loadAddressWalletConnect}
+                >
+                    <div className={style.walletButtonLabel}>WalletConnect</div>
+                    <div className={style.walletButtonLogoWrapper}>
+                        <Image
+                            src={walletConnectIcon}
+                            alt="Wallet Connect logo"
+                            layout="fill"
+                        />
+                    </div>
+                </button>
+            </div>
+        )
     )
 }

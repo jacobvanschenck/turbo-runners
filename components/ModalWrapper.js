@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { walletModalIsVisible } from '../store/wallet/actions'
+import { modalIsVisible } from '../store/wallet/actions'
 
 const style = {
     modalContainer:
@@ -27,11 +27,11 @@ let useClickOutside = (handler) => {
 }
 
 export default function ModalWrapper({ children }) {
-    const isVisible = useSelector((state) => state.wallet.walletModalIsVisible)
+    const isVisible = useSelector((state) => state.wallet.modalIsVisible)
     const dispatch = useDispatch()
     const modalRef = useClickOutside(() => {
         if (isVisible) {
-            dispatch(walletModalIsVisible(false))
+            dispatch(modalIsVisible(false))
         }
     })
 

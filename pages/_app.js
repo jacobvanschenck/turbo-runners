@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Provider, useSelector } from 'react-redux'
 import ModalWrapper from '../components/ModalWrapper'
 import WalletConnectModal from '../components/WalletConnectModal'
+import AddressModal from '../components/AddressModal'
 import configureStore from '../store/configureStore'
 import '../styles/globals.css'
 
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
             <ModalWrapper>
                 <WalletConnectModal />
+                <AddressModal />
             </ModalWrapper>
         </Provider>
     )
