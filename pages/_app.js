@@ -1,5 +1,8 @@
 import Head from 'next/head'
-import { Provider } from 'react-redux'
+import { useState } from 'react'
+import { Provider, useSelector } from 'react-redux'
+import ModalWrapper from '../components/ModalWrapper'
+import WalletConnectModal from '../components/WalletConnectModal'
 import configureStore from '../store/configureStore'
 import '../styles/globals.css'
 
@@ -10,9 +13,13 @@ function MyApp({ Component, pageProps }) {
         <Provider store={store}>
             <Head>
                 <title>Logo Ipsum</title>
+                <meta name="description" content="content" />
                 <link rel="icon" href="/logoipsum-favicon.svg" />
             </Head>
             <Component {...pageProps} />
+            <ModalWrapper>
+                <WalletConnectModal />
+            </ModalWrapper>
         </Provider>
     )
 }

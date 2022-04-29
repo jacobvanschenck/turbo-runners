@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import WalletConnect from './WalletConnect'
+import WalletConnectButton from './WalletConnectButton'
 import logo from '../assests/logoipsum-favicon.svg'
 
 const style = {
@@ -33,7 +33,7 @@ export default function Header() {
                     <div className={style.headerItem}>Contact</div>
                 </Link>
             </div>
-            <WalletConnect />
+            <WalletConnectButton />
         </nav>
     )
 }
