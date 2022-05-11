@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",
+    "@openzeppelin/contracts": "^4.6.0",
+    "@truffle/hdwallet-provider": "^2.0.8",
     "@walletconnect/web3-provider": "^1.7.8",
     "dotenv": "^16.0.0",
     "identicon.js": "^2.3.3",
@@ -20,6 +22,7 @@
     "react-redux": "^8.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "truffle-plugin-verify": "^0.5.25",
     "web3": "^1.7.3"
   },
   "devDependencies": {
