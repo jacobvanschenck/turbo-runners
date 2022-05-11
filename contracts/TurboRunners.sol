@@ -3,6 +3,7 @@ pragma solidity ^0.8.4;
 
 import "./ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 contract TurboRunners is ERC721A, Ownable {
 	uint256 public MAX_MINTS = 5;
@@ -10,13 +11,15 @@ contract TurboRunners is ERC721A, Ownable {
 	uint256 public MAX_SUPPLY;
 	uint256 public mintRate;
 	uint256 public timeDeployed;
-	uint256 public allowMintingAfter = 0;
+	uint256 public allowPublicMintingAfter = 0;
+	uint256 public allowWhiteListMintingAfter = 0;
+	bytes32 public root;
 	uint256 public revealDate = 0;
 	bool public isPaused = false;
 	string public notRevealedURI;
 	string public baseURI;
 	address public artist;
-	uint256 royaltyFee;
+	uint256 royaltyFee = 5;
 
 	constructor(
 		string memory _name,
@@ -24,34 +27,45 @@ contract TurboRunners is ERC721A, Ownable {
 		uint256 _mintRate,
 		uint256 _maxSupply,
 		uint256 _maxMints,
-		uint256 _allowMintingOn,
+		uint256 _allowPublicMintingOn,
+		uint256 _allowWhitelistMintingOn,
+		bytes32 _root,
 		uint256 _revealDate,
 		string memory _initBaseURI,
-		string memory _initNotRevealedURI,
-		address _artist,
-		uint256 _royaltyFee
+		string memory _initNotRevealedURI
 	) ERC721A(_name, _symbol) {
-		if (_allowMintingOn > block.timestamp) {
-			allowMintingAfter = _allowMintingOn - block.timestamp;
+		if (_allowPublicMintingOn > block.timestamp) {
+			allowPublicMintingAfter = _allowPublicMintingOn - block.timestamp;
 		}
 		if (_revealDate > block.timestamp) {
 			revealDate = _revealDate - block.timestamp;
+		}
+		if (_allowWhitelistMintingOn > block.timestamp) {
+			allowWhiteListMintingAfter =
+				_allowWhitelistMintingOn -
+				block.timestamp;
 		}
 		mintRate = _mintRate;
 		MAX_SUPPLY = _maxSupply;
 		MAX_MINTS = _maxMints;
 		baseURI = _initBaseURI;
 		notRevealedURI = _initNotRevealedURI;
-		artist = _artist;
-		royaltyFee = _royaltyFee;
+		root = _root;
+		artist = msg.sender;
 		timeDeployed = block.timestamp;
 	}
 
-	function mint(uint256 quantity) external payable {
+	function mint(bytes32[] memory _proof, uint256 quantity) external payable {
 		require(
-			block.timestamp >= allowMintingAfter + timeDeployed,
-			"Minting not allowed yet"
+			block.timestamp >= allowWhiteListMintingAfter + timeDeployed,
+			"Address not on Whitelist"
 		);
+		if (block.timestamp < allowPublicMintingAfter + timeDeployed) {
+			require(
+				isValid(_proof, keccak256(abi.encodePacked(msg.sender))),
+				"Address not on Whitelist"
+			);
+		}
 		require(!isPaused, "Minting is currently paused");
 		require(
 			quantity + _numberMinted(msg.sender) <= MAX_MINTS,
@@ -163,5 +177,17 @@ contract TurboRunners is ERC721A, Ownable {
 		}
 
 		return super.tokenURI(tokenId);
+	}
+
+	function isValid(bytes32[] memory proof, bytes32 leaf)
+		public
+		view
+		returns (bool)
+	{
+		return MerkleProof.verify(proof, root, leaf);
+	}
+
+	function setRoot(bytes32 _root) public onlyOwner {
+		root = _root;
 	}
 }
