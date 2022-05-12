@@ -141,7 +141,7 @@ contract TurboRunners is ERC721A, Ownable {
 			}("");
 			require(success2);
 		}
-		super.safeTransferFrom(from, to, tokenId);
+		super.safeTransferFrom(from, to, tokenId, "");
 	}
 
 	function safeTransferFrom(
@@ -173,7 +173,7 @@ contract TurboRunners is ERC721A, Ownable {
 		override
 		returns (string memory)
 	{
-		if (block.timestamp <= revealDate + timeDeployed) {
+		if (block.timestamp < revealDate + timeDeployed) {
 			return notRevealedURI;
 		}
 
