@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 contract TurboRunners is ERC721A, Ownable {
-	uint256 public MAX_MINTS = 5;
-	uint256 public MAX_MINT_PER_TRANSACTION = 3;
+	uint256 public MAX_MINTS;
+	uint256 public MAX_MINT_PER_TRANSACTION;
 	uint256 public MAX_SUPPLY;
 	uint256 public mintRate;
 	uint256 public timeDeployed;
@@ -22,18 +22,18 @@ contract TurboRunners is ERC721A, Ownable {
 	uint256 royaltyFee = 5;
 
 	constructor(
-		string memory _name,
-		string memory _symbol,
 		uint256 _mintRate,
 		uint256 _maxSupply,
 		uint256 _maxMints,
+		uint256 _maxMintsPerTransaction,
 		uint256 _allowPublicMintingOn,
 		uint256 _allowWhitelistMintingOn,
 		bytes32 _root,
 		uint256 _revealDate,
 		string memory _initBaseURI,
-		string memory _initNotRevealedURI
-	) ERC721A(_name, _symbol) {
+		string memory _initNotRevealedURI,
+		address _artist
+	) ERC721A("Turbo Runners", "TBRNR") {
 		if (_allowPublicMintingOn > block.timestamp) {
 			allowPublicMintingAfter = _allowPublicMintingOn - block.timestamp;
 		}
@@ -48,17 +48,18 @@ contract TurboRunners is ERC721A, Ownable {
 		mintRate = _mintRate;
 		MAX_SUPPLY = _maxSupply;
 		MAX_MINTS = _maxMints;
+		MAX_MINT_PER_TRANSACTION = _maxMintsPerTransaction;
 		baseURI = _initBaseURI;
 		notRevealedURI = _initNotRevealedURI;
 		root = _root;
-		artist = msg.sender;
+		artist = _artist;
 		timeDeployed = block.timestamp;
 	}
 
 	function mint(bytes32[] memory _proof, uint256 quantity) external payable {
 		require(
 			block.timestamp >= allowWhiteListMintingAfter + timeDeployed,
-			"Address not on Whitelist"
+			"Minting not allowed yet"
 		);
 		if (block.timestamp < allowPublicMintingAfter + timeDeployed) {
 			require(
