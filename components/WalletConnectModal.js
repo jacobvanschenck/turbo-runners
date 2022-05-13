@@ -6,8 +6,6 @@ import {
     loadWeb3MetaMask,
     loadWeb3WalletConnect,
 } from '../store/web3/web3Utils'
-import metamaskIcon from '../assests/metamaskIcon.png'
-import walletConnectIcon from '../assests/walletConnectIcon.svg'
 import { AiOutlineClose } from 'react-icons/ai'
 import ModalWrapper from '../components/ModalWrapper'
 
@@ -57,7 +55,7 @@ export default function WalletConnectModal() {
                 >
                     <div className={style.walletButtonLabel}>MetaMask</div>
                     <div className={style.walletButtonLogoWrapper}>
-                        <Image src={metamaskIcon} alt="MetaMask logo" />
+                        <Image src="/metamaskIcon.png" alt="MetaMask logo" />
                     </div>
                 </button>
                 <button
@@ -67,7 +65,7 @@ export default function WalletConnectModal() {
                     <div className={style.walletButtonLabel}>WalletConnect</div>
                     <div className={style.walletButtonLogoWrapper}>
                         <Image
-                            src={walletConnectIcon}
+                            src="/walletConnectIcon.svg"
                             alt="Wallet Connect logo"
                             layout="fill"
                         />

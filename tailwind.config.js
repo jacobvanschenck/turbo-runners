@@ -4,7 +4,12 @@ module.exports = {
         './components/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                lasercorps: ['LASERCORPS'],
+                spacegrotesk: ['Space Grotesk'],
+            },
+        },
     },
     plugins: [],
 }
