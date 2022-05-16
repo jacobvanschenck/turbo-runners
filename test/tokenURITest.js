@@ -1,7 +1,7 @@
 const { expectRevert } = require('@openzeppelin/test-helpers')
 const { getMerkleTree, getMerkleRoot } = require('../lib/merkleTreeHelpers')
 const TurboRunners = artifacts.require('TurboRunners.sol')
-const { calcDate } = require('../lib/calcDate')
+require('dotenv').config({ path: __dirname + '/../.env.local' })
 
 contract('TurboRunners - tokenURI()', (accounts) => {
     const [owner, artist, minter, trader, whitelistMinter] = [

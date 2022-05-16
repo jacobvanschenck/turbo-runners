@@ -14,10 +14,10 @@ export function web3AccountLoaded(account) {
     }
 }
 
-export const WEB3_CONTRACTS_LOADED = 'WEB3_CONTRACTS_LOADED'
-export function web3ContractsLoaded(contracts) {
+export const WEB3_CONTRACT_LOADED = 'WEB3_CONTRACT_LOADED'
+export function web3ContractLoaded(contract) {
     return {
-        type: WEB3_CONTRACTS_LOADED,
-        contracts: contracts,
+        type: WEB3_CONTRACT_LOADED,
+        contract: contract,
     }
 }

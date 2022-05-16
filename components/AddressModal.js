@@ -20,7 +20,7 @@ const style = {
     addressContainer:
         'flex w-full justify-between items-center text-lg pt-2 pb-4',
     buttonsContainer: 'flex w-full justify-start items-center',
-    button: 'flex items-center ml-2 text-xs text-slate-600 hover:text-slate-500 cursor-pointer',
+    button: 'flex items-center ml-4 text-xs text-slate-600 border-b border-black hover:text-[#ff2975]  hover:border-[#ff2975] cursor-pointer',
 }
 
 export default function AddressModal() {
@@ -68,7 +68,7 @@ export default function AddressModal() {
                                 </p>
                             </div>
                             <button
-                                className="bg-slate-200 rounded-md text-sm px-2 py-1 hover:bg-slate-300"
+                                className="bg-none border rounded-md text-sm px-2 py-1 hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] cursor-pointer"
                                 onClick={() => {
                                     dispatch(walletModalIsVisible(true))
                                 }}
@@ -92,7 +92,7 @@ export default function AddressModal() {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <IoOpenOutline className="mr-1 ml-4" />
+                                <IoOpenOutline className="mr-1" />
                                 <p>View on Explorer</p>
                             </a>
                         </div>

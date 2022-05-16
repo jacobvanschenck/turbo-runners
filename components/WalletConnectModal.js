@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { walletModalIsVisible } from '../store/wallet/actions'
 import {
     loadAccount,
+    loadContract,
     loadWeb3MetaMask,
     loadWeb3WalletConnect,
 } from '../store/web3/web3Utils'
@@ -27,12 +28,14 @@ export default function WalletConnectModal() {
     const loadAddressMetaMask = async () => {
         let web3 = await loadWeb3MetaMask(dispatch)
         await loadAccount(web3, dispatch)
+        await loadContract(web3, dispatch)
         dispatch(walletModalIsVisible(false))
     }
 
     const loadAddressWalletConnect = async () => {
         let web3 = await loadWeb3WalletConnect(dispatch)
         await loadAccount(web3, dispatch)
+        await loadContract(web3, dispatch)
         dispatch(walletModalIsVisible(false))
     }
 

@@ -1,6 +1,7 @@
 import Web3 from 'web3'
-import { web3loaded, web3AccountLoaded, web3ContractsLoaded } from './actions'
+import { web3loaded, web3AccountLoaded, web3ContractLoaded } from './actions'
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import TurboRunners from '../../build/contracts/TurboRunners.json'
 
 export const loadWeb3MetaMask = async (dispatch) => {
     let web3
@@ -36,18 +37,13 @@ export const loadAccount = async (web3, dispatch) => {
     return account
 }
 
-export const loadContracts = async (web3, dispatch) => {
+export const loadContract = async (web3, dispatch) => {
     const networkId = await web3.eth.net.getId()
-    const deployedNetwork = NFT.networks[networkId]
+    const deployedNetwork = TurboRunners.networks[networkId]
     const nft = new web3.eth.Contract(
-        NFT.abi,
+        TurboRunners.abi,
         deployedNetwork && deployedNetwork.address
     )
-    deployedNetwork = NFTMarketplace.networks[networkId]
-    const marketplace = new web3.eth.Contract(
-        NFTMarketplace.abi,
-        deployedNetwork && deployedNetwork.address
-    )
-    dispatch(web3ContractsLoaded({ nft, marketplace }))
-    return { nft, marketplace }
+    dispatch(web3ContractLoaded(nft))
+    return nft
 }
