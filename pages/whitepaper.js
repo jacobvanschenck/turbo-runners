@@ -9,4 +9,4 @@ function Whitepaper() {
     )
 }
 
-export default Contact
+export default Whitepaper

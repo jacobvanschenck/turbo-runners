@@ -10,7 +10,7 @@ import { web3AccountLoaded } from '../store/web3/actions'
 
 const style = {
     headerButton:
-        'flex border-2 px-5 py-1 items-center justify-around rounded-md cursor-pointer',
+        'flex border-2 px-5 py-1 items-center justify-around rounded-md hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] cursor-pointer',
     imageWrapper: 'flex mr-2 items-center rounded-md',
 }
 

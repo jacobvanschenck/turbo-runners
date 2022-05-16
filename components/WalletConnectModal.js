@@ -15,7 +15,7 @@ const style = {
     modalText: 'm-2 font-semibold',
     modalIcon: 'm-2 w-5 h-5 hover:text-slate-600 cursor-pointer',
     walletButtonContainer:
-        'flex h-20 justify-between items-center bg-slate-200 p-4 m-2 rounded-md border border-slate-300 hover:bg-slate-300 cursor-pointer',
+        'flex h-20 justify-between items-center p-4 m-2 rounded-md border border-slate-300 hover:bg-slate-200/50 cursor-pointer',
     walletButtonLabel: 'block',
     walletButtonLogoWrapper: 'relative h-10 w-10',
 }
@@ -55,7 +55,11 @@ export default function WalletConnectModal() {
                 >
                     <div className={style.walletButtonLabel}>MetaMask</div>
                     <div className={style.walletButtonLogoWrapper}>
-                        <Image src="/metamaskIcon.png" alt="MetaMask logo" />
+                        <Image
+                            src="/metamaskIcon.png"
+                            alt="MetaMask logo"
+                            layout="fill"
+                        />
                     </div>
                 </button>
                 <button

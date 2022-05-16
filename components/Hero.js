@@ -14,8 +14,12 @@ export default function Hero() {
             </div>
             <div className="flex-col w-1/2 max-w-3xl justify-center items-center z-10 p-10">
                 <div>
-                    <h1 className="font-lasercorps text-7xl">Welcome to</h1>
-                    <h1 className="font-lasercorps text-7xl pb-5">Metrocity</h1>
+                    <h1 className="font-lasercorpsgradient text-7xl -mb-3">
+                        Welcome to
+                    </h1>
+                    <h1 className="font-lasercorpshalf text-7xl pb-5">
+                        Metrocity
+                    </h1>
                 </div>
                 <p className="text-lg">
                     In a future of control and oppression, Turbo Runners fight

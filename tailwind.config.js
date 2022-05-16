@@ -6,8 +6,11 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                lasercorps: ['LASERCORPS'],
+                lasercorpshalf: ['LASERCORPS_HALFTONE'],
+                lasercorpsgradient: ['LASERCORPS_GRADIENT'],
+                lasercorpsacademy: ['LASERCORPS_ACADEMY'],
                 spacegrotesk: ['Space Grotesk'],
+                anybody: ['Anybody'],
             },
         },
     },

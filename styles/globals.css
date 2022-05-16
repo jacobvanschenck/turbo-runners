@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'LASERCORPS';
+    font-family: 'LASERCORPS_HALFTONE';
     src: url('../public/fonts/LaserCorpsHalftoneItalic-vmv17.otf');
+}
+@font-face {
+    font-family: 'LASERCORPS_GRADIENT';
+    src: url('../public/fonts/LaserCorpsGradientItalic-4By9x.otf');
+}
+@font-face {
+    font-family: 'LASERCORPS_ACADEMY';
+    src: url('../public/fonts/LaserCorpsAcademyItalic-axy9R.otf');
 }
 
 html,
@@ -12,7 +20,9 @@ body {
     padding: 0;
     margin: 0;
     background: black;
+    color: white;
     font-family: Space Grotesk, sans-serif;
+    scroll-behavior: smooth;
 }
 
 a {
