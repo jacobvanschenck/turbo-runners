@@ -99,17 +99,37 @@ export default function Mint() {
                                     className="font-anybody font-semibold italic tracking-wider text-5xl pb-6"
                                 />
                             )}
-                            <ul className="ml-10 pb-6 list-disc text-lg">
-                                <li>10 AI generated images</li>
-                                <li>Mint on Rinkey testnet</li>
-                                <li>
-                                    Viewable on Opensea shortly after minting
-                                </li>
-                            </ul>
                             <h3 className="text-3xl pb-2">
                                 Pre-Sale Minting Open
                             </h3>
-                            <p>You are one the whitelist</p>
+                            <p className="pb-4">You are one the whitelist!</p>
+                            <ul className="ml-10 pb-4 text-lg">
+                                <li>
+                                    Total Supply:{' '}
+                                    <span className="text-[#ff2975] pl-2">
+                                        10
+                                    </span>
+                                </li>
+                                <li>
+                                    Price Per Mint:{' '}
+                                    <span className="text-[#ff2975] pl-2">
+                                        0.01 ETH
+                                    </span>
+                                </li>
+                                <li>
+                                    Max Mint Per Transaction:{' '}
+                                    <span className="text-[#ff2975] pl-2">
+                                        3
+                                    </span>
+                                </li>
+                                <li>
+                                    Max Mint Per Address:{' '}
+                                    <span className="text-[#ff2975] pl-2">
+                                        5
+                                    </span>
+                                </li>
+                            </ul>
+
                             <MintButton />
                         </div>
                     </div>

@@ -16,7 +16,7 @@ const style = {
     modalText: 'm-2 font-semibold',
     modalIcon: 'm-2 w-5 h-5 hover:text-slate-600 cursor-pointer',
     addressInfoContainer:
-        'flex flex-col justify-between items-center p-4 m-2 rounded-md border border-slate-300',
+        'flex flex-col justify-between items-center p-4 m-2 rounded-md border-2 border-slate-300',
     addressContainer:
         'flex w-full justify-between items-center text-lg pt-2 pb-4',
     buttonsContainer: 'flex w-full justify-start items-center',
@@ -68,7 +68,7 @@ export default function AddressModal() {
                                 </p>
                             </div>
                             <button
-                                className="bg-none border rounded-md text-sm px-2 py-1 hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] cursor-pointer"
+                                className="bg-none border-2 rounded-md text-sm px-2 py-1 hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] cursor-pointer"
                                 onClick={() => {
                                     dispatch(walletModalIsVisible(true))
                                 }}
