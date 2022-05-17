@@ -7,6 +7,7 @@ import {
     addressModalIsVisible,
 } from '../store/wallet/actions'
 import { web3AccountLoaded } from '../store/web3/actions'
+import { loadAccount } from '../store/web3/web3Utils'
 
 const style = {
     headerButton:
@@ -31,9 +32,9 @@ export default function WalletConnect() {
         if (connection) {
             const provider = connection.currentProvider
             provider.on('accountsChanged', (accounts) => {
-                dispatch(web3AccountLoaded(accounts[0]))
+                loadAccount(connection, dispatch)
             })
-            provider.on('disconnect', () => dispatch(web3AccountLoaded(null)))
+            provider.on('disconnect', () => loadAccount(web3, dispatch))
         }
     }, [connection, dispatch])
 

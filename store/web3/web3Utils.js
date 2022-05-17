@@ -1,5 +1,10 @@
 import Web3 from 'web3'
-import { web3loaded, web3AccountLoaded, web3ContractLoaded } from './actions'
+import {
+    web3loaded,
+    web3AccountLoaded,
+    web3ContractLoaded,
+    setIsWhitelisted,
+} from './actions'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import TurboRunners from '../../build/contracts/TurboRunners.json'
 
@@ -33,6 +38,8 @@ export const loadWeb3WalletConnect = async (dispatch) => {
 export const loadAccount = async (web3, dispatch) => {
     const accounts = await web3.eth.getAccounts()
     const account = accounts[0]
+    const whitelist = process.env.NEXT_PUBLIC_WHITELIST.split(', ')
+    dispatch(setIsWhitelisted(whitelist.includes(account)))
     dispatch(web3AccountLoaded(account))
     return account
 }

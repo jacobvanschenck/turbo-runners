@@ -29,3 +29,11 @@ export function publicMintDateSet(publicMintDate) {
         publicMintDate,
     }
 }
+
+export const IS_WHITELISTED = 'IS_WHITELISTED'
+export function setIsWhitelisted(isWhitelisted) {
+    return {
+        type: IS_WHITELISTED,
+        isWhitelisted,
+    }
+}
