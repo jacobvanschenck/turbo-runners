@@ -1,54 +1,34 @@
 import Image from 'next/image'
-import NoWorkResult from 'postcss/lib/no-work-result'
 import { useEffect, useState } from 'react'
 import Countdown from 'react-countdown'
 import { useDispatch, useSelector } from 'react-redux'
-import { publicMintDateSet } from '../store/web3/actions'
+import { publicMintDateSet, whitelistMintDateSet } from '../store/web3/actions'
 import MintButton from './MintButton'
 
 export default function Mint() {
     const currentTime = Date.now()
-    const [publicMintDate, setPublicMintDate] = useState(new Date())
-    const [whitelistMintDate, setWhitelistMintDate] = useState(new Date())
     const contract = useSelector((state) => state.web3.contract)
+    const isWhitelisted = useSelector((state) => state.web3.isWhitelisted)
     const [mintDate, setMintDate] = useState(
         useSelector((state) => state.web3.publicMintDate)
+    )
+    const [whitelistMintDate, setWhitelistMintDate] = useState(
+        useSelector((state) => state.web3.whitelistMintDate)
     )
     const dispatch = useDispatch()
 
     useEffect(() => {
-        let date = new Date(
+        let publicMintDate = new Date(
             process.env.NEXT_PUBLIC_NFT_PUBLIC_MINT_DATE
         ).getTime()
-        console.log(date)
-        setMintDate(date)
-        dispatch(publicMintDateSet(date))
+        let whitelistMintDate = new Date(
+            process.env.NEXT_PUBLIC_NFT_WHITELIST_MINT_DATE
+        ).getTime()
+        setMintDate(publicMintDate)
+        setWhitelistMintDate(whitelistMintDate)
+        dispatch(whitelistMintDateSet(whitelistMintDate))
+        dispatch(publicMintDateSet(publicMintDate))
     }, [dispatch])
-
-    useEffect(() => {
-        if (contract) {
-            ;(async () => {
-                let timeDeployed = await contract.methods.timeDeployed().call()
-                let allowPublicMintAfter = await contract.methods
-                    .allowPublicMintingAfter()
-                    .call()
-                let allowWhiteListMintingAfter = await contract.methods
-                    .allowWhiteListMintingAfter()
-                    .call()
-                setPublicMintDate(
-                    (
-                        Number(timeDeployed) + Number(allowPublicMintAfter)
-                    ).toString() + '000'
-                )
-                setWhitelistMintDate(
-                    (
-                        Number(timeDeployed) +
-                        Number(allowWhiteListMintingAfter)
-                    ).toString() + '000'
-                )
-            })()
-        }
-    }, [dispatch, contract])
 
     return (
         <section
@@ -99,10 +79,22 @@ export default function Mint() {
                                     className="font-anybody font-semibold italic tracking-wider text-5xl pb-6"
                                 />
                             )}
-                            <h3 className="text-3xl pb-2">
-                                Pre-Sale Minting Open
-                            </h3>
-                            <p className="pb-4">You are one the whitelist!</p>
+                            {whitelistMintDate < currentTime &&
+                            currentTime < mintDate ? (
+                                <div>
+                                    <h3 className="text-3xl pb-2">
+                                        Pre-Sale Minting Open
+                                    </h3>
+                                    {isWhitelisted ? (
+                                        <p className="pb-4">
+                                            You are one the whitelist!
+                                        </p>
+                                    ) : (
+                                        <p className="pb-4">Not on whitelist</p>
+                                    )}
+                                </div>
+                            ) : null}
+
                             <ul className="ml-10 pb-4 text-lg">
                                 <li>
                                     Total Supply:{' '}

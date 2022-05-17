@@ -3,6 +3,7 @@ import {
     WEB3_ACCOUNT_LOADED,
     WEB3_CONTRACT_LOADED,
     PUBLIC_MINT_DATE_SET,
+    WHITELIST_MINT_DATE_SET,
     IS_WHITELISTED,
 } from './actions'
 
@@ -21,6 +22,8 @@ const web3 = (
             return { ...state, contract: action.contract }
         case PUBLIC_MINT_DATE_SET:
             return { ...state, publicMintDate: action.publicMintDate }
+        case WHITELIST_MINT_DATE_SET:
+            return { ...state, whitelistMintDate: action.whitelistMintDate }
         case IS_WHITELISTED:
             return { ...state, isWhitelisted: action.isWhitelisted }
         default:

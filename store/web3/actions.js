@@ -30,6 +30,14 @@ export function publicMintDateSet(publicMintDate) {
     }
 }
 
+export const WHITELIST_MINT_DATE_SET = 'WHITELIST_MINT_DATE_SET'
+export function whitelistMintDateSet(whitelistMintdate) {
+    return {
+        type: WHITELIST_MINT_DATE_SET,
+        whitelistMintdate,
+    }
+}
+
 export const IS_WHITELISTED = 'IS_WHITELISTED'
 export function setIsWhitelisted(isWhitelisted) {
     return {
