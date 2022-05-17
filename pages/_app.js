@@ -8,10 +8,6 @@ import { useEffect } from 'react'
 const store = createStore()
 
 function MyApp({ Component, pageProps }) {
-    useEffect(() => {
-        console.log('mounted')
-    }, [])
-
     return (
         <Provider store={store}>
             <Component {...pageProps} />

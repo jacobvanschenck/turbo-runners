@@ -13,13 +13,6 @@ contract('TurboRunners - mint()', (accounts) => {
         accounts[9],
     ]
     const amount = web3.utils.toWei('.01')
-    const NFT_PUBLIC_MINT_DATE = calcDate(
-        process.env.NEXT_PUBLIC_NFT_PUBLIC_MINT_DATE
-    )
-    const NFT_WHITELIST_MINT_DATE = calcDate(
-        process.env.NEXT_PUBLIC_NFT_WHITELIST_MINT_DATE
-    )
-    const NFT_REVEAL_DATE = calcDate(process.env.NFT_REVEAL_DATE)
 
     const MINT_RATE = web3.utils.toWei(process.env.MINT_RATE)
 

@@ -1,14 +1,17 @@
 const TurboRunners = artifacts.require('TurboRunners')
 const { getMerkleTree, getMerkleRoot } = require('../lib/merkleTreeHelpers')
+require('dotenv').config({ path: __dirname + '/../.env.local' })
 
 module.exports = async function (deployer) {
-    const NFT_PUBLIC_MINT_DATE = new Date(process.env.NFT_PUBLIC_MINT_DATE)
+    const NFT_PUBLIC_MINT_DATE = new Date(
+        process.env.NEXT_PUBLIC_NFT_PUBLIC_MINT_DATE
+    )
         .getTime()
         .toString()
         .slice(0, 10)
 
     const NFT_WHITELIST_MINT_DATE = new Date(
-        process.env.NFT_WHITELIST_MINT_DATE
+        process.env.NEXT_PUBLIC_NFT_WHITELIST_MINT_DATE
     )
         .getTime()
         .toString()

@@ -1,14 +1,29 @@
 import Image from 'next/image'
+import NoWorkResult from 'postcss/lib/no-work-result'
 import { useEffect, useState } from 'react'
 import Countdown from 'react-countdown'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { publicMintDateSet } from '../store/web3/actions'
 import MintButton from './MintButton'
 
 export default function Mint() {
-    const currentTime = new Date().getTime()
+    const currentTime = Date.now()
     const [publicMintDate, setPublicMintDate] = useState(new Date())
     const [whitelistMintDate, setWhitelistMintDate] = useState(new Date())
     const contract = useSelector((state) => state.web3.contract)
+    const [mintDate, setMintDate] = useState(
+        useSelector((state) => state.web3.publicMintDate)
+    )
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        let date = new Date(
+            process.env.NEXT_PUBLIC_NFT_PUBLIC_MINT_DATE
+        ).getTime()
+        console.log(date)
+        setMintDate(date)
+        dispatch(publicMintDateSet(date))
+    }, [dispatch])
 
     useEffect(() => {
         if (contract) {
@@ -33,7 +48,7 @@ export default function Mint() {
                 )
             })()
         }
-    }, [contract])
+    }, [dispatch, contract])
 
     return (
         <section
@@ -76,12 +91,14 @@ export default function Mint() {
                             <h3 className="text-3xl pb-2">
                                 Public Minting Countdown:
                             </h3>
-                            <Countdown
-                                date={
-                                    currentTime + (publicMintDate - currentTime)
-                                }
-                                className="font-anybody font-semibold italic tracking-wider text-5xl pb-6"
-                            />
+                            {mintDate && (
+                                <Countdown
+                                    date={
+                                        currentTime + (mintDate - currentTime)
+                                    }
+                                    className="font-anybody font-semibold italic tracking-wider text-5xl pb-6"
+                                />
+                            )}
                             <ul className="ml-10 pb-6 list-disc text-lg">
                                 <li>10 AI generated images</li>
                                 <li>Mint on Rinkey testnet</li>

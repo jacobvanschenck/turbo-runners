@@ -21,3 +21,11 @@ export function web3ContractLoaded(contract) {
         contract: contract,
     }
 }
+
+export const PUBLIC_MINT_DATE_SET = 'PUBLIC_MINT_DATE_SET'
+export function publicMintDateSet(publicMintDate) {
+    return {
+        type: PUBLIC_MINT_DATE_SET,
+        publicMintDate,
+    }
+}
