@@ -25,6 +25,9 @@ export default function Header() {
                 <Link href="/#mint" passHref>
                     <div className={style.headerItem}>Mint</div>
                 </Link>
+                <Link href="/#roadmap" passHref>
+                    <div className={style.headerItem}>Roadmap</div>
+                </Link>
                 <Link href="/gallery" passHref>
                     <div className={style.headerItem}>Gallery</div>
                 </Link>
