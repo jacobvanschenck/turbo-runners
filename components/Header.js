@@ -31,10 +31,10 @@ export default function Header() {
                 <Link href="/#team" passHref>
                     <div className={style.headerItem}>Team</div>
                 </Link>
-                <Link href="/gallery" passHref>
-                    <div className={style.headerItem}>Gallery</div>
+                <Link href="/#faq" passHref>
+                    <div className={style.headerItem}>FAQ</div>
                 </Link>
-                <Link href="/whitepaper" passHref>
+                <Link href="https://whitepaper.io/" passHref>
                     <div className={style.headerItem}>Whitepaper</div>
                 </Link>
             </div>
