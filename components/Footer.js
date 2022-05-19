@@ -14,7 +14,7 @@ const style = {
 
 export default function Footer() {
     return (
-        <nav className={style.wrapper}>
+        <footer className={style.wrapper}>
             <div className={style.headerItems}>
                 <p>© 2022 by Turbo Runners</p>
             </div>
@@ -38,6 +38,6 @@ export default function Footer() {
                     </div>
                 </Link>
             </div>
-        </nav>
+        </footer>
     )
 }

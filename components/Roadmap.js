@@ -4,7 +4,7 @@ export default function Roadmap() {
     return (
         <section
             id="roadmap"
-            className="flex flex-col justify-center items-center p-24 mt-4"
+            className="flex flex-col justify-center items-center p-24 mt-4 bg-[#321450]"
         >
             <h2 className="font-lasercorpshalf w-fit text-6xl pb-6">
                 Launch Roadmap

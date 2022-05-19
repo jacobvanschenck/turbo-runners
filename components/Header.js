@@ -28,6 +28,9 @@ export default function Header() {
                 <Link href="/#roadmap" passHref>
                     <div className={style.headerItem}>Roadmap</div>
                 </Link>
+                <Link href="/#team" passHref>
+                    <div className={style.headerItem}>Team</div>
+                </Link>
                 <Link href="/gallery" passHref>
                     <div className={style.headerItem}>Gallery</div>
                 </Link>
