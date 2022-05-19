@@ -15,6 +15,7 @@ export default function Mint() {
     const [whitelistMintDate, setWhitelistMintDate] = useState(
         useSelector((state) => state.web3.whitelistMintDate)
     )
+    const account = useSelector((state) => state.web3.account)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -82,7 +83,7 @@ export default function Mint() {
                             {whitelistMintDate < currentTime &&
                             currentTime < mintDate ? (
                                 <div>
-                                    <h3 className="text-3xl pb-2">
+                                    <h3 className="text-3xl pb-4">
                                         Pre-Sale Minting Open
                                     </h3>
                                     {isWhitelisted ? (
@@ -90,7 +91,14 @@ export default function Mint() {
                                             You are one the whitelist!
                                         </p>
                                     ) : (
-                                        <p className="pb-4">Not on whitelist</p>
+                                        <button
+                                            className="border-2 text-xl px-6 py-3 mb-4 ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975]"
+                                            onClick={() =>
+                                                (location.href = `mailto:xyz@yourapplicationdomain.com?subject=Add Me to the Whitelist&body=My address is ${account}`)
+                                            }
+                                        >
+                                            Join the whitelist
+                                        </button>
                                     )}
                                 </div>
                             ) : null}

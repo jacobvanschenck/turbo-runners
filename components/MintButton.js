@@ -11,10 +11,15 @@ export default function MintButton() {
     const account = useSelector((state) => state.web3.account)
     const nft = useSelector((state) => state.web3.contract)
     const web3 = useSelector((state) => state.web3.connection)
+    const isWhitelisted = useSelector((state) => state.web3.isWhitelisted)
+    const currentTime = Date.now()
+    const whitelistMintDate = useSelector(
+        (state) => state.web3.whitelistMintDate
+    )
+    const mintDate = useSelector((state) => state.web3.publicMintDate)
     const [quantity, setQuantity] = useState(1)
     const [max, setMax] = useState(0)
     const [isMinting, setIsMinting] = useState(false)
-    const [onWhiteList, setOnWhiteList] = useState(false)
 
     useEffect(() => {
         setMax(process.env.NEXT_PUBLIC_MAX_MINT_PER_TRANSACTION)
