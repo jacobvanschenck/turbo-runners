@@ -14,9 +14,10 @@ const style = {
     container: 'relative flex flex-col',
     titleContainer: 'relative flex justify-between items-center',
     modalText: 'm-2 font-semibold',
-    modalIcon: 'm-2 w-5 h-5 hover:text-slate-600 cursor-pointer',
+    modalIcon:
+        'm-2 w-5 h-5 hover:text-slate-600 cursor-pointer transition ease-out duration-300',
     walletButtonContainer:
-        'flex h-20 justify-between items-center p-4 m-2 rounded-md border-2 border-slate-300 hover:bg-slate-200/50 cursor-pointer',
+        'flex h-20 justify-between items-center p-4 m-2 rounded-md border-2 border-slate-300 hover:bg-[#ff2975] hover:border-[#ff2975] cursor-pointer transition ease-out duration-300',
     walletButtonLabel: 'block',
     walletButtonLogoWrapper: 'relative h-10 w-10',
 }

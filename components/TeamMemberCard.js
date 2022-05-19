@@ -24,7 +24,7 @@ export default function TeamMemberCard(props) {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <ImTwitter className="text-4xl hover:text-[#ff2975] cursor-pointer" />
+                    <ImTwitter className="text-4xl hover:text-[#ff2975] cursor-pointer  transition ease-out duration-300" />
                 </a>
             </div>
             <div className="w-full text-justify mt-4">{props.children}</div>

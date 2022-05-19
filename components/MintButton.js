@@ -67,7 +67,7 @@ export default function MintButton() {
                 <div className="flex w-full self-center justify-center items-center">
                     <div className="flex items-center">
                         <button
-                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975]"
+                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
                             onClick={decrement}
                         >
                             -
@@ -76,14 +76,14 @@ export default function MintButton() {
                             {quantity}
                         </p>
                         <button
-                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975]"
+                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
                             onClick={increment}
                         >
                             +
                         </button>
                     </div>
                     <button
-                        className="border-2 text-xl px-6 py-3 ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0"
+                        className="border-2 text-xl px-6 py-3 ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
                         disabled={account === undefined}
                         onClick={nftMintingHandler}
                     >

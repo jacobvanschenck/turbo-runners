@@ -1,6 +1,26 @@
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
+    const [counter, setCounter] = useState(8)
+    const [isCycling, setIsCycling] = useState(false)
+
+    const cycleImages = async () => {
+        const getRandomNumber = () => {
+            const counter = Math.floor(Math.random() * 10)
+            setCounter(counter)
+        }
+
+        if (!isCycling) {
+            setInterval(getRandomNumber, 1000)
+        }
+        setIsCycling(true)
+    }
+
+    useEffect(() => {
+        cycleImages()
+    }, [])
+
     return (
         <section className="h-[110vh] relative flex w-screen justify-center items-center">
             <div className="">
@@ -13,7 +33,7 @@ export default function Hero() {
                 />
             </div>
             <div className="flex-col w-1/2 max-w-3xl justify-center items-center z-10 p-10">
-                <div>
+                <div className="flex flex-col items-center">
                     <h1 className="font-lasercorpsgradient text-7xl -mb-3">
                         Welcome to
                     </h1>
@@ -21,10 +41,17 @@ export default function Hero() {
                         Metrocity
                     </h1>
                 </div>
-                <p className="text-lg">
+                <p className="text-lg text-center mb-6">
                     In a future of control and oppression, Turbo Runners fight
                     for independance and freedom
                 </p>
+                <Image
+                    className="object-contain rounded-md"
+                    src={`/runners/${counter}.png`}
+                    alt="NFT Image"
+                    width="800"
+                    height="800"
+                />
             </div>
         </section>
     )

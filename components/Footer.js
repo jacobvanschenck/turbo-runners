@@ -6,10 +6,9 @@ import { AiFillInstagram } from 'react-icons/ai'
 const style = {
     wrapper:
         'w-screen h-20 flex justify-evenly border-t-2 border-white bg-black px-10 py-3 z-20',
-    logoContainter: 'flex items-center cursor-pointer',
     headerItems: 'flex items-center',
     headerItem:
-        'flex items-center px-4 mx-2 font-bold hover:text-[#ff2975] cursor-pointer',
+        'flex items-center px-4 mx-2 font-bold hover:text-[#ff2975] cursor-pointer  transition ease-out duration-300',
 }
 
 export default function Footer() {
