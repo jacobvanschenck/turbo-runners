@@ -33,8 +33,8 @@ export default function Hero() {
                 />
             </div>
             <div className="flex justify-center items-center">
-                <div className="flex-col w-1/2 max-w-3xl justify-center items-center z-10 p-10">
-                    <div className="flex flex-col items-center">
+                <div className="flex-col w-1/2 justify-center items-center z-10 p-10">
+                    <div className="flex flex-col">
                         <h1 className="font-lasercorpsgradient text-7xl -mb-3">
                             Welcome to
                         </h1>
@@ -42,7 +42,7 @@ export default function Hero() {
                             Metrocity
                         </h1>
                     </div>
-                    <p className="text-lg text-center mb-6">
+                    <p className="text-lg mb-6">
                         In a future of control and oppression, Turbo Runners
                         fight for independance and freedom
                     </p>

@@ -10,7 +10,7 @@ const style = {
     logoText: 'inline font-lasercorpshalf text-2xl',
     headerItems: 'flex items-center',
     headerItem:
-        'px-4 mx-2 font-bold border-b-2 border-black/50 hover:text-[#ff2975] hover:border-b-2 hover:border-[#ff2975] cursor-pointer transition ease-out duration-300',
+        'px-4 mx-2 font-bold border-b-2 border-black/0 hover:text-[#ff2975] hover:border-b-2 hover:border-[#ff2975] cursor-pointer transition ease-out duration-300',
 }
 
 export default function Header() {

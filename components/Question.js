@@ -10,7 +10,11 @@ export default function Question(props) {
                 onClick={() => setIsVisible(!isVisible)}
             >
                 <h3 className="text-xl">{props.question}</h3>
-                <HiChevronDown className="text-2xl" />
+                {isVisible ? (
+                    <HiChevronUp className="text-2xl" />
+                ) : (
+                    <HiChevronDown className="text-2xl" />
+                )}
             </button>
             {isVisible ? (
                 <div className="mt-4 ml-6">{props.children}</div>

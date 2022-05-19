@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ImTwitter } from 'react-icons/im'
+import { FaTwitterSquare } from 'react-icons/fa'
 
 export default function TeamMemberCard(props) {
     return (
@@ -14,7 +14,7 @@ export default function TeamMemberCard(props) {
                     className="rounded-full object-cover"
                 />
             </div>
-            <div className="flex justify-start space-x-10 items-center mt-4">
+            <div className="flex justify-between space-x-10 items-center mt-4">
                 <div>
                     <h3 className="text-2xl">{props.name}</h3>
                     <h4 className="text-lg mt-2">{props.job}</h4>
@@ -24,7 +24,7 @@ export default function TeamMemberCard(props) {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <ImTwitter className="text-4xl hover:text-[#ff2975] cursor-pointer  transition ease-out duration-300" />
+                    <FaTwitterSquare className="text-4xl hover:text-[#ff2975] cursor-pointer  transition ease-out duration-300" />
                 </a>
             </div>
             <div className="w-full text-justify mt-4">{props.children}</div>
