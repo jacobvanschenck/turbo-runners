@@ -64,7 +64,7 @@ export default function MintButton() {
             {isMinting ? (
                 <SyncLoader color={'#ff2975'} />
             ) : (
-                <div className="flex w-full self-center justify-center items-center">
+                <div className="flex flex-col lg:flex-row w-full justify-center items-center space-y-6 lg:space-y-0 my-6">
                     <div className="flex items-center">
                         <button
                             className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
@@ -83,7 +83,7 @@ export default function MintButton() {
                         </button>
                     </div>
                     <button
-                        className="border-2 text-xl px-6 py-3 ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                        className="border-2 text-xl px-6 py-3 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
                         disabled={account === undefined}
                         onClick={nftMintingHandler}
                     >

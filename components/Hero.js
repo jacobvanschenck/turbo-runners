@@ -32,13 +32,13 @@ export default function Hero() {
                     quality={100}
                 />
             </div>
-            <div className="flex justify-center items-center">
-                <div className="flex-col w-1/2 justify-center items-center z-10 p-10">
+            <div className="flex flex-col lg:flex-row justify-center items-center">
+                <div className="flex-col md:w-3/4 lg:w-1/2 justify-center items-center text-center z-10 p-10">
                     <div className="flex flex-col">
-                        <h1 className="font-lasercorpsgradient text-7xl -mb-3">
+                        <h1 className="font-lasercorpsgradient text-5xl md:text-7xl -mb-3">
                             Welcome to
                         </h1>
-                        <h1 className="font-lasercorpshalf text-7xl pb-5">
+                        <h1 className="font-lasercorpshalf text-5xl md:text-7xl pb-5">
                             Metrocity
                         </h1>
                     </div>
@@ -47,7 +47,7 @@ export default function Hero() {
                         fight for independance and freedom
                     </p>
                 </div>
-                <div className="">
+                <div className="w-60 md:w-96 lg:w-auto">
                     <Image
                         className="object-contain rounded-md flex-1"
                         src={`/runners/${counter}.png`}

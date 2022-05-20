@@ -6,10 +6,10 @@ export default function Roadmap() {
             id="roadmap"
             className="flex flex-col justify-center items-center p-24 mt-4 bg-[#321450]"
         >
-            <h2 className="font-lasercorpshalf w-fit text-6xl pb-6">
+            <h2 className="font-lasercorpshalf w-fit text-6xl mb-12 text-center">
                 Launch Roadmap
             </h2>
-            <div className="grid gap-x-10 gap-y-14 grid-cols-3">
+            <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
                 <RoadmapItem title={'Pre-Mint Phase'}>
                     <li>Official website launch</li>
                     <li>Marketing and awareness</li>

@@ -4,11 +4,11 @@ import WalletConnectButton from './WalletConnectButton'
 
 const style = {
     wrapper:
-        'w-screen h-15 flex justify-between bg-black/50 px-10 py-3 border-b-2 fixed z-30',
+        'w-full h-15 flex justify-between bg-black/50 px-10 py-3 border-b-2 fixed z-30',
     logoContainter: 'flex items-center cursor-pointer',
     logo: '',
-    logoText: 'inline font-lasercorpshalf text-2xl',
-    headerItems: 'flex items-center',
+    logoText: 'inline font-lasercorpshalf text-lg md:text-2xl mr-2',
+    headerItems: 'hidden lg:flex items-center',
     headerItem:
         'px-4 mx-2 font-bold border-b-2 border-black/0 hover:text-[#ff2975] hover:border-b-2 hover:border-[#ff2975] cursor-pointer transition ease-out duration-300',
 }

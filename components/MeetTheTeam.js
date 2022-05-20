@@ -3,11 +3,11 @@ import TeamMemberCard from './TeamMemberCard'
 export default function MeetTheTeam() {
     return (
         <section id="team">
-            <div className="flex flex-col p-24">
-                <h2 className="font-lasercorpshalf w-fit text-6xl pb-6 place-self-center">
+            <div className="flex flex-col items-center md:items-stretch p-24">
+                <h2 className="font-lasercorpshalf w-fit text-5xl md:text-6xl pb-6 place-self-center text-center">
                     Meet the Team
                 </h2>
-                <div className="flex justify-evenly space-x-10">
+                <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
                     <TeamMemberCard
                         name={'Vincent'}
                         job={'Lead Developer'}

@@ -5,8 +5,8 @@ import { AiFillInstagram } from 'react-icons/ai'
 
 const style = {
     wrapper:
-        'w-screen h-20 flex justify-evenly border-t-2 border-white bg-black px-10 py-3 z-20',
-    headerItems: 'flex items-center',
+        'w-screen min-h-fit md:h-20 flex flex-col-reverse md:flex-row justify-evenly items-center border-t-2 border-white bg-black px-10 py-6 z-20',
+    headerItems: 'flex items-center my-6',
     headerItem:
         'flex items-center px-4 mx-2 font-bold hover:text-[#ff2975] cursor-pointer  transition ease-out duration-300',
 }
