@@ -4,25 +4,9 @@ import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
 export default function Question(props) {
     const [isVisible, setIsVisible] = useState(false)
     return (
-        <div className="border-2 h rounded-md p-4">
-            <button
-                className="flex w-full items-center justify-between"
-                onClick={() => setIsVisible(!isVisible)}
-            >
-                <h3 className="md:text-xl">{props.question}</h3>
-                {isVisible ? (
-                    <HiChevronUp className="text-2xl" />
-                ) : (
-                    <HiChevronDown className="text-2xl" />
-                )}
-            </button>
-            <div
-                className={`text-sm md:text-base mt-4 ml-6 ${
-                    isVisible ? null : 'hidden'
-                }`}
-            >
-                {props.children}
-            </div>
-        </div>
+        <details className="border-2 rounded-md p-4 text-justify cursor-pointer group overflow-hidden transition-all duration-1000 max-h-24 lg:max-h-15 open:max-h-[1000px] closed:m-h-24">
+            <summary className="md:text-xl">{props.question}</summary>
+            <div className="mt-4 mx-4">{props.children}</div>
+        </details>
     )
 }
