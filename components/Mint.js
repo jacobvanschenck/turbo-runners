@@ -50,7 +50,7 @@ export default function Mint() {
                         </div>
                         {contract ? (
                             <div>
-                                <p className="text-sm mt-4 ml-10">
+                                <p className="text-sm mt-4 lg:ml-10">
                                     Collection:{' '}
                                     <a
                                         className="hover:text-[#ff2975] hover:cursor-pointer hover:border-b-2 hover:border-[#ff2975]"
@@ -67,7 +67,7 @@ export default function Mint() {
                         )}
                     </div>
                     <div className="flex flex-col h-full lg:pl-24 pt-10 text-center lg:text-left">
-                        <h2 className="font-lasercorpshalf w-fit text-5xl pb-6">
+                        <h2 className="font-lasercorpshalf w-fit text-4xl md:text-5xl pb-6">
                             About the Collection
                         </h2>
                         <div className="flex flex-col h-full lg:pl-10">
@@ -79,7 +79,7 @@ export default function Mint() {
                                     date={
                                         currentTime + (mintDate - currentTime)
                                     }
-                                    className="font-anybody font-semibold italic tracking-wider text-5xl pb-6"
+                                    className="font-anybody font-semibold italic tracking-wider text-3xl md:text-4xl lg:text-5xl pb-6"
                                 />
                             )}
                             {whitelistMintDate < currentTime &&

@@ -5,7 +5,7 @@ import { FaTwitterSquare } from 'react-icons/fa'
 export default function TeamMemberCard(props) {
     return (
         <div className="flex flex-col w-72 rounded-md p-4">
-            <div className="place-self-center">
+            <div className="place-self-center w-48 md:w-auto">
                 <Image
                     src={props.pic}
                     alt={`profile picture for ${props.name}`}

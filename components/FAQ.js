@@ -17,7 +17,7 @@ export default function FAQ() {
                 />
             </div>
             <div className="flex flex-col md:w-10/12 space-y-10 z-10">
-                <h2 className="font-lasercorpshalf w-fit text-5xl md:text-6xl pb-6 place-self-center text-center">
+                <h2 className="font-lasercorpshalf w-fit text-4xl md:text-5xl lg:text-6xl pb-6 place-self-center text-center">
                     Frequently Asked Questions
                 </h2>
                 <Question question={'Total Supply?'}>

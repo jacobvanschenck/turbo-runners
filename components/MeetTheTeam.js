@@ -4,7 +4,7 @@ export default function MeetTheTeam() {
     return (
         <section id="team">
             <div className="flex flex-col items-center md:items-stretch p-24">
-                <h2 className="font-lasercorpshalf w-fit text-5xl md:text-6xl pb-6 place-self-center text-center">
+                <h2 className="font-lasercorpshalf w-fit text-4xl md:text-5xl lg:text-6xl pb-6 place-self-center text-center">
                     Meet the Team
                 </h2>
                 <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
