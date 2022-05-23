@@ -68,19 +68,26 @@ export default function Mint() {
                     </div>
                     <div className="flex flex-col h-full lg:pl-24 pt-10 text-center lg:text-left">
                         <h2 className="font-lasercorpshalf w-fit text-4xl md:text-5xl pb-6">
-                            About the Collection
+                            Mint Your NFT
                         </h2>
                         <div className="flex flex-col h-full lg:pl-10">
-                            <h3 className="text-3xl pb-2">
-                                Public Minting Countdown:
-                            </h3>
-                            {mintDate && (
-                                <Countdown
-                                    date={
-                                        currentTime + (mintDate - currentTime)
-                                    }
-                                    className="font-anybody font-semibold italic tracking-wider text-3xl md:text-4xl lg:text-5xl pb-6"
-                                />
+                            {mintDate > currentTime ? (
+                                <div className="mb-4">
+                                    <h3 className="text-3xl pb-2">
+                                        Public Minting Countdown:
+                                    </h3>
+                                    <Countdown
+                                        date={
+                                            currentTime +
+                                            (mintDate - currentTime)
+                                        }
+                                        className="font-anybody font-semibold italic tracking-wider text-3xl md:text-4xl lg:text-5xl"
+                                    />
+                                </div>
+                            ) : (
+                                <h3 className="text-3xl pb-4">
+                                    Minting is Live
+                                </h3>
                             )}
                             {whitelistMintDate < currentTime &&
                             currentTime < mintDate ? (

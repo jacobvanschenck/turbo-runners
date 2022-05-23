@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html>
             <Head>
-                <title>Turbo Runners</title>
                 <meta name="description" content="content" />
                 <link rel="icon" href="/logoipsum-favicon.svg" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />

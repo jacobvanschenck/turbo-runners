@@ -10,6 +10,7 @@ import {
 const web3 = (
     state = {
         account: undefined,
+        whitelistMintDate: 0,
     },
     action
 ) => {

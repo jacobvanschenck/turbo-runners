@@ -16,6 +16,7 @@ export const loadWeb3MetaMask = async (dispatch) => {
     } else if (window.web3) {
         web3 = new Web3(window.web3.currentProvider)
     } else {
+        throw 'No Metamask Detected'
     }
     dispatch(web3loaded(web3))
     return web3

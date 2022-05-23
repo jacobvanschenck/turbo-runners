@@ -2,7 +2,7 @@ import { HiChevronDown } from 'react-icons/hi'
 
 export default function Question(props) {
     return (
-        <div className="border-2 rounded-md p-4 text-justify">
+        <div className="border-2 rounded-md p-4">
             <input
                 type="checkbox"
                 id={`sortbox${props.question}`}

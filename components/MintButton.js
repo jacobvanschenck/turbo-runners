@@ -82,13 +82,26 @@ export default function MintButton() {
                             +
                         </button>
                     </div>
-                    <button
-                        className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
-                        disabled={account === undefined}
-                        onClick={nftMintingHandler}
-                    >
-                        {account ? 'Mint Now' : 'Connect Wallet to Mint'}
-                    </button>
+                    {whitelistMintDate > currentTime ||
+                    (whitelistMintDate < currentTime &&
+                        currentTime < mintDate &&
+                        !isWhitelisted) ? (
+                        <button
+                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                            disabled={true}
+                            onClick={nftMintingHandler}
+                        >
+                            Minting Not Available Yet
+                        </button>
+                    ) : (
+                        <button
+                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                            disabled={account === undefined}
+                            onClick={nftMintingHandler}
+                        >
+                            {account ? 'Mint Now' : 'Connect Wallet to Mint'}
+                        </button>
+                    )}
                 </div>
             )}
         </div>

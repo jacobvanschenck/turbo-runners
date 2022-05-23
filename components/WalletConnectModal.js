@@ -27,9 +27,16 @@ export default function WalletConnectModal() {
     const isVisible = useSelector((state) => state.wallet.walletModalIsVisible)
 
     const loadAddressMetaMask = async () => {
-        let web3 = await loadWeb3MetaMask(dispatch)
-        await loadAccount(web3, dispatch)
-        await loadContract(web3, dispatch)
+        let web3
+        try {
+            web3 = await loadWeb3MetaMask(dispatch)
+        } catch (error) {
+            window.alert(error)
+        }
+        if (web3) {
+            await loadAccount(web3, dispatch)
+            await loadContract(web3, dispatch)
+        }
         dispatch(walletModalIsVisible(false))
     }
 

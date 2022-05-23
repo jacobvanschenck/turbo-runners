@@ -31,10 +31,10 @@ export function publicMintDateSet(publicMintDate) {
 }
 
 export const WHITELIST_MINT_DATE_SET = 'WHITELIST_MINT_DATE_SET'
-export function whitelistMintDateSet(whitelistMintdate) {
+export function whitelistMintDateSet(whitelistMintDate) {
     return {
         type: WHITELIST_MINT_DATE_SET,
-        whitelistMintdate,
+        whitelistMintDate,
     }
 }
 
