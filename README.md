@@ -5,6 +5,7 @@
 An full NFT project with the NFT contract and full minting site.
 
 Here is the dApp running on the [Rinkeby Network](####)
+Here is the NFT on [OpenSea](https://testnets.opensea.io/collection/turbo-runners-v5)
 
 ## Features 📼
 
@@ -32,7 +33,7 @@ This project uses an implementation of the [ERC-721a](https://www.azuki.com/erc7
 
 ## Install 💾
 
-Start of by cloning this repo or downloading the zip file.
+Start off by cloning this repo or downloading the zip file.
 After that open up your terminal and run these commands:
 
 ```

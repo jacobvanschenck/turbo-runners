@@ -49,11 +49,6 @@ export default function MintButton() {
                 from: account,
                 value: web3.utils.toWei('0.01'),
             })
-            .on('confirmation', (confirmationNumber, receipt) => {
-                window.alert(
-                    `Minting Successful!\nTransaction Hash: ${receipt.transactionHash}`
-                )
-            })
             .on('receipt', (receipt) => {
                 setIsMinting(false)
                 console.log(receipt)
