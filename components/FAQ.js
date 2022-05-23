@@ -29,11 +29,11 @@ export default function FAQ() {
                 <Question question={'How can I buy a Turbo Runner?'}>
                     To buy Turbo Runner NFT you need to have some Ethereum
                     (ETH), which you can buy on CoinBase or Binance. Then, if
-                    you don't already have one, you'll create a MetaMask wallet,
-                    where you will transfer your Ethereum (ETH). Select how much
-                    Turbo Runners NFTs you want to buy and click the "Mint"
-                    button that will appear on our website when the public sale
-                    is live.
+                    you don&apos;t already have one, you&apos;ll create a
+                    MetaMask wallet, where you will transfer your Ethereum
+                    (ETH). Select how much Turbo Runners NFTs you want to buy
+                    and click the &quot;Mint&quot; button that will appear on
+                    our website when the public sale is live.
                 </Question>
                 <Question question={'How do I get on the whitelist?'}>
                     Contact us or join our discord to learn how to get on our
