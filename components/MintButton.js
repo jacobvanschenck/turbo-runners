@@ -49,6 +49,11 @@ export default function MintButton() {
                 from: account,
                 value: web3.utils.toWei('0.01'),
             })
+            .on('confirmation', (confirmationNumber, receipt) => {
+                window.alert(
+                    `Minting Successful!\nTransaction Hash: ${receipt.transactionHash}`
+                )
+            })
             .on('receipt', (receipt) => {
                 setIsMinting(false)
                 console.log(receipt)
@@ -57,6 +62,15 @@ export default function MintButton() {
                 setIsMinting(false)
                 window.alert(`Code: ${error.code}\n${error.message}`)
             })
+    }
+
+    const mintingAllowed = () => {
+        return (
+            currentTime > mintDate ||
+            (currentTime < mintDate &&
+                currentTime > whitelistMintDate &&
+                isWhitelisted)
+        )
     }
 
     return (
@@ -82,7 +96,7 @@ export default function MintButton() {
                             +
                         </button>
                     </div>
-                    {whitelistMintDate > currentTime ||
+                    {/* {whitelistMintDate > currentTime ||
                     (whitelistMintDate < currentTime &&
                         currentTime < mintDate &&
                         !isWhitelisted) ? (
@@ -100,6 +114,24 @@ export default function MintButton() {
                             onClick={nftMintingHandler}
                         >
                             {account ? 'Mint Now' : 'Connect Wallet to Mint'}
+                        </button>
+                    )} */}
+                    {account ? (
+                        <button
+                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                            disabled={!mintingAllowed()}
+                            onClick={nftMintingHandler}
+                        >
+                            {!mintingAllowed()
+                                ? 'Minting Not Available Yet'
+                                : 'Mint Now'}
+                        </button>
+                    ) : (
+                        <button
+                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                            disabled={account === undefined}
+                        >
+                            {'Connect Wallet to Mint'}
                         </button>
                     )}
                 </div>
