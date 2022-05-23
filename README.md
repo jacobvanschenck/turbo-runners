@@ -1,6 +1,6 @@
 # Welcome to Turbo Runners
 
-![Turbo Runners Screenshot](https://raw.githubusercontent.com/jacobvanschenck/nft-project-nextjs/master/GIFs/turborunners-screenshot.gif)
+![Turbo Runners Screenshot](https://raw.githubusercontent.com/jacobvanschenck/nft-project-nextjs/master/GIFs/turborunners-screenshot.png)
 
 An full NFT project with the NFT contract and full minting site.
 
