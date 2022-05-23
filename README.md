@@ -1,5 +1,7 @@
 # Welcome to Turbo Runners
 
+![Turbo Runners Screenshot](https://raw.githubusercontent.com/jacobvanschenck/nft-project-nextjs/master/GIFs/turborunners-screenshot.gif)
+
 An full NFT project with the NFT contract and full minting site.
 
 Here is the dApp running on the [Rinkeby Network](####)
@@ -21,7 +23,7 @@ This project uses an implementation of the [ERC-721a](https://www.azuki.com/erc7
 
 ## Whitelisting 📋
 
-![whitelist-gif](https://raw.githubusercontent.com/jacobvanschenck/nft-project-nextjs/master/GIFs/whitelist.gif)
+![Whitelist Gif](https://raw.githubusercontent.com/jacobvanschenck/nft-project-nextjs/master/GIFs/whitelist.gif)
 
 -   Smart Contract is created with a 'root' from a Merkle Tree
 -   Front-End checks to see if address is on list
