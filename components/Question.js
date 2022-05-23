@@ -1,12 +1,23 @@
-import { useState } from 'react'
-import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
+import { HiChevronDown } from 'react-icons/hi'
 
 export default function Question(props) {
-    const [isVisible, setIsVisible] = useState(false)
     return (
-        <details className="border-2 rounded-md p-4 text-justify cursor-pointer group overflow-hidden transition-all duration-1000 max-h-24 lg:max-h-15 open:max-h-[1000px] closed:m-h-24">
-            <summary className="md:text-xl">{props.question}</summary>
-            <div className="mt-4 mx-4">{props.children}</div>
-        </details>
+        <div className="border-2 rounded-md p-4 text-justify">
+            <input
+                type="checkbox"
+                id={`sortbox${props.question}`}
+                className="hidden absolute peer group"
+            />
+            <label
+                htmlFor={`sortbox${props.question}`}
+                className="inline-flex items-center justify-between md:text-xl cursor-pointer"
+            >
+                <span>{props.question}</span>
+            </label>
+            <HiChevronDown className="duration-200 inline-flex ml-2 text-xl transition-all peer-checked:rotate-180" />
+            <div className="mx-4 overflow-hidden max-h-0 duration-300 transition-all peer-checked:max-h-[1000px]">
+                <p className="mt-4">{props.children}</p>
+            </div>
+        </div>
     )
 }
