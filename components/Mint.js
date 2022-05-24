@@ -38,7 +38,7 @@ export default function Mint() {
         >
             <div className="before:content-[''] before:bg-black before:bg-[url('../public/runner1.png')] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-cover before:bg-top before:opacity-30 before:blur w-full h-full flex justify-center items-center">
                 <div className="max-w-3/4 flex flex-col-reverse lg:flex-row justify-center lg:items-start m-10 z-20">
-                    <div className="place-self-center">
+                    <div className="place-self-center flex flex-col items-center">
                         <div className="w-60 md:w-96 lg:w-auto">
                             <Image
                                 className="rounded-md aspect-auto flex-1"
@@ -50,7 +50,7 @@ export default function Mint() {
                         </div>
                         {contract ? (
                             <div>
-                                <p className="text-sm mt-4 lg:ml-10">
+                                <p className="text-xs text-center md:text-sm mt-4">
                                     Collection:{' '}
                                     <a
                                         className="hover:text-[#ff2975] hover:cursor-pointer hover:border-b-2 hover:border-[#ff2975]"
