@@ -11,7 +11,7 @@ export default function MeetTheTeam() {
                     <TeamMemberCard
                         name={'Vincent'}
                         job={'Lead Developer'}
-                        pic={'/../public/team-pictures/pic1.png'}
+                        pic={'/team-pictures/pic1.png'}
                     >
                         <p>
                             A Jack of all trades, and a master of Solidity,
@@ -23,7 +23,7 @@ export default function MeetTheTeam() {
                     <TeamMemberCard
                         name={'Sarah'}
                         job={'Artist'}
-                        pic={'/../public/team-pictures/pic2.png'}
+                        pic={'/team-pictures/pic2.png'}
                     >
                         <p>
                             With 8 years of experience in the creative space
@@ -35,7 +35,7 @@ export default function MeetTheTeam() {
                     <TeamMemberCard
                         name={'Gregory'}
                         job={'Marketing'}
-                        pic={'/../public/team-pictures/pic3.png'}
+                        pic={'/team-pictures/pic3.png'}
                     >
                         <p>
                             Professional digital marketer by day. A catalyst for
