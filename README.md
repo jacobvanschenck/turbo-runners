@@ -4,7 +4,7 @@
 
 An full NFT project with the NFT contract and full minting site.
 
-Here is the dApp running on the [Rinkeby Network](####)
+Here is the dApp running on the [Rinkeby Network](https://turbo-runners.vercel.app/)
 Here is the NFT on [OpenSea](https://testnets.opensea.io/collection/turbo-runners-v5)
 
 ## Features 📼
