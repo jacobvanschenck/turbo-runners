@@ -53,7 +53,7 @@ export default function MintButton() {
                 from: account,
                 value: web3.utils.toWei(value.toString()),
             })
-            .on('confirmation', (num, receipt) => {
+            .on('receipt', (receipt) => {
                 console.log(receipt)
                 let tokenId
                 if (quantity > 1) {
