@@ -126,7 +126,7 @@ export default function MintButton() {
                         )}
                     </div>
                     {nft && minted && (
-                        <div className="flex flex-col items-stretch">
+                        <div className="flex flex-col">
                             <p className="text-xs md:text-sm mt-4">
                                 View your NFT on{' '}
                                 <a
@@ -138,7 +138,7 @@ export default function MintButton() {
                                     OpenSea
                                 </a>
                             </p>
-                            <p className="text-xs md:text-sm mt-2">
+                            <p className="text-xs md:text-sm mt-2 mb-4">
                                 View the transaction on{' '}
                                 <a
                                     className="hover:text-[#ff2975] hover:cursor-pointer hover:border-b-2 hover:border-[#ff2975]"
