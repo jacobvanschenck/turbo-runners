@@ -20,6 +20,9 @@ export default function MintButton() {
     const [quantity, setQuantity] = useState(1)
     const [max, setMax] = useState(0)
     const [isMinting, setIsMinting] = useState(false)
+    const [minted, setMinted] = useState(false)
+    const [nftId, setNftId] = useState(undefined)
+    const [transactionId, setTransactionId] = useState(undefined)
 
     useEffect(() => {
         setMax(process.env.NEXT_PUBLIC_MAX_MINT_PER_TRANSACTION)
@@ -43,15 +46,26 @@ export default function MintButton() {
     const nftMintingHandler = async () => {
         const proof = getProof(account)
         setIsMinting(true)
+        let value = 0.01 * quantity
         await nft.methods
             .mint(proof, quantity)
             .send({
                 from: account,
-                value: web3.utils.toWei('0.01'),
+                value: web3.utils.toWei(value.toString()),
             })
-            .on('receipt', (receipt) => {
-                setIsMinting(false)
+            .on('confirmation', (num, receipt) => {
                 console.log(receipt)
+                let tokenId
+                if (quantity > 1) {
+                    tokenId = receipt.events.Transfer[0].returnValues.tokenId
+                } else {
+                    tokenId = receipt.events.Transfer.returnValues.tokenId
+                }
+                let transactionHash = receipt.transactionHash
+                setNftId(tokenId)
+                setTransactionId(transactionHash)
+                setMinted(true)
+                setIsMinting(false)
             })
             .on('error', (error) => {
                 setIsMinting(false)
@@ -73,61 +87,69 @@ export default function MintButton() {
             {isMinting ? (
                 <SyncLoader color={'#ff2975'} />
             ) : (
-                <div className="flex flex-col-reverse lg:flex-row w-full justify-center items-center my-6">
-                    <div className="flex items-center">
-                        <button
-                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
-                            onClick={decrement}
-                        >
-                            -
-                        </button>
-                        <p className="px-4 text-2xl text-[#ff2975]">
-                            {quantity}
-                        </p>
-                        <button
-                            className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
-                            onClick={increment}
-                        >
-                            +
-                        </button>
+                <div className="flex flex-col">
+                    <div className="flex flex-col-reverse lg:flex-row w-full justify-center items-center mt-6">
+                        <div className="flex items-center">
+                            <button
+                                className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
+                                onClick={decrement}
+                            >
+                                -
+                            </button>
+                            <p className="px-4 text-2xl text-[#ff2975]">
+                                {quantity}
+                            </p>
+                            <button
+                                className="flex justify-center items-center border-2 text-2xl w-8 h-8 rounded-full cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] transition ease-out duration-300"
+                                onClick={increment}
+                            >
+                                +
+                            </button>
+                        </div>
+                        {account ? (
+                            <button
+                                className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                                disabled={!mintingAllowed()}
+                                onClick={nftMintingHandler}
+                            >
+                                {!mintingAllowed()
+                                    ? 'Minting Not Available Yet'
+                                    : 'Mint Now'}
+                            </button>
+                        ) : (
+                            <button
+                                className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
+                                disabled={account === undefined}
+                            >
+                                {'Connect Wallet to Mint'}
+                            </button>
+                        )}
                     </div>
-                    {/* {whitelistMintDate > currentTime ||
-                    (whitelistMintDate < currentTime &&
-                        currentTime < mintDate &&
-                        !isWhitelisted) ? (
-                        <button
-                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
-                            disabled={true}
-                            onClick={nftMintingHandler}
-                        >
-                            Minting Not Available Yet
-                        </button>
-                    ) : (
-                        <button
-                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
-                            disabled={account === undefined}
-                            onClick={nftMintingHandler}
-                        >
-                            {account ? 'Mint Now' : 'Connect Wallet to Mint'}
-                        </button>
-                    )} */}
-                    {account ? (
-                        <button
-                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
-                            disabled={!mintingAllowed()}
-                            onClick={nftMintingHandler}
-                        >
-                            {!mintingAllowed()
-                                ? 'Minting Not Available Yet'
-                                : 'Mint Now'}
-                        </button>
-                    ) : (
-                        <button
-                            className="border-2 text-xl px-6 py-3 mb-4 lg:mb-0 lg:ml-10 rounded-md cursor-pointer hover:bg-[#ff2975] hover:text-white hover:border-[#ff2975] disabled:cursor-not-allowed disabled:border-slate-200/50 disabled:text-slate-200/50 disabled:bg-black/0 transition ease-out duration-300"
-                            disabled={account === undefined}
-                        >
-                            {'Connect Wallet to Mint'}
-                        </button>
+                    {nft && minted && (
+                        <div className="flex flex-col items-stretch">
+                            <p className="text-xs md:text-sm mt-4">
+                                View your NFT on{' '}
+                                <a
+                                    className="hover:text-[#ff2975] hover:cursor-pointer hover:border-b-2 hover:border-[#ff2975]"
+                                    href={`https://testnets.opensea.io/assets/rinkeby/${nft._address}/${nftId}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    OpenSea
+                                </a>
+                            </p>
+                            <p className="text-xs md:text-sm mt-2">
+                                View the transaction on{' '}
+                                <a
+                                    className="hover:text-[#ff2975] hover:cursor-pointer hover:border-b-2 hover:border-[#ff2975]"
+                                    href={`https://rinkeby.etherscan.io/tx/${transactionId}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    etherscan.io
+                                </a>
+                            </p>
+                        </div>
                     )}
                 </div>
             )}
